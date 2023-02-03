@@ -22,61 +22,62 @@ interface UserInstance
         updatedAt?: Date;
     }
 
-    const Users = db.define<UserInstance>('users', {
-        user_id: {
-            type: DataTypes.STRING,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                len: [3, 50]
-            }
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        date_of_birth: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                isEmail: true
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        is_admin: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
+const Users = db.define<UserInstance>('users', {
+    user_id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        validate: {
+            notEmpty: true
         }
-    }, {
-        freezeTableName: true
-    })
-    
-    export default Users;
+    },
+    first_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+            len: [3, 50]
+        }
+    },
+    last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    date_of_birth: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+            isEmail: true
+        }
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    is_admin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    }
+}, {
+    freezeTableName: true
+})
+
+export default Users;
