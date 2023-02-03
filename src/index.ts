@@ -6,7 +6,8 @@ import SequelizeStore from 'connect-session-sequelize';
 import db from './config/Database';
 
 /* Routes */
-import UserRoute from "./routes/UserRoute";
+import UserRoute from './routes/UserRoute';
+import AuthRoute from './routes/AuthRoute';
 
 config();
 
@@ -50,6 +51,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(UserRoute);
+app.use(AuthRoute);
 
 const PORT = process.env.PORT || 8080;
 
